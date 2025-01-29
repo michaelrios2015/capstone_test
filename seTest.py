@@ -131,21 +131,12 @@ def download_unzip_gm(url_head):
 
 # so apperently the renaming is super simple wont give me two files, so probably combine this with the extract function
 
-# os.rename("new.txt", "monthlySFPS_202412.txt")
-
-# DIR_PATH = "C:/Users/micha/Downloads/"
-# BASENAME = "dailySFPS.txt"
-
-# # def newest(DIR_PATH):
-# files = os.listdir(DIR_PATH)
-# # print(files)
-# FILE_LIST = [
-#     os.path.join(DIR_PATH, BASENAME)
-#     for BASENAME in files
-#     if not BASENAME.endswith("trimmed.json")
-# ]
-# print(FILE_LIST)
-# # return max(FILE_LIST, key=os.path.getctime)
+# so this is alll designed to deal with the dailySFPS which is a bit annoying as all the other downloads are pretty freaking simple
+# just download the file, and move it from downloads to the folder i want, daily i need to download it, then fine the most recent one
+# then move that to the folder i want then rename that based on what month it is but if I can do that then this function can handle
+# all the ginnie mae files, cmos are there own thing.... not a clue if that can be standardized would need to ask david, fed data works fine
+# with the easier method, david still gives me some data but i can probably just get the code, oh wel this whole thing is just going to be a slow
+# and how often do i need a try fail and is that the only thing i am supposed to use
 
 
 import os
@@ -156,7 +147,7 @@ import time
 def find_most_recent_file(directory, partial_name):
     """Finds the most recent file in a directory with a partial name match."""
 
-    print(os.path.join(directory, f"{partial_name}*"))
+    # print(os.path.join(directory, f"{partial_name}*"))
 
     path = directory + partial_name + "*"
     print("------")
@@ -166,6 +157,7 @@ def find_most_recent_file(directory, partial_name):
     print(files)
 
     print("------")
+    # Am I supposed to do this all the time??
     if not files:
         return None
 
