@@ -1,3 +1,10 @@
+# so I want to automate the downloading of the ginnie mae files
+# for the code I wrote I use pools, platinums, platcols...these are all super simple since they are simnply
+# download then moved from the download file to the file i need them in I mean technically they could stay in the download folder
+# dailySPFS are the only hard one, I will usually have a bunch of tehse saved, so I need to find the newest on, unzip that
+# then rename to the correct date
+
+
 # importing webdriver from selenium
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -71,54 +78,6 @@ def get_file_gm(url_head):
 ######################################################################################
 ######################################################################################
 
-# function 2 so
-
-import zipfile
-import os
-
-# it's a simple function not sure if it is really neccessary
-# def unzip(src, dest):
-#     # # this unzips them and places them in my cvspyreaders
-#     with zipfile.ZipFile(src, "r") as zip_ref:
-#         zip_ref.extractall(dest)
-
-
-# # this will work for everything except the dailyspfs
-# src = "C:/Users/micha/Downloads/monthlySFPS_202412.zip"
-# dest = "C:/Users/micha/capstoneTest/"
-
-# unzip(src, dest)
-
-# so we want to download and unzip the files
-
-
-def download_unzip_gm(url_head):
-    # so this downloads the file to C:/Users/micha/Downloads/
-    get_file_gm(url_head)
-
-    # so the source and destionation should never change, well the source changes a bit
-    # but we are given the change
-    src = "C:/Users/micha/Downloads/" + url_head
-    dest = "C:/Users/micha/capstoneTest/"
-
-    # then just unzipfile and place it where we want
-    with zipfile.ZipFile(src, "r") as zip_ref:
-        zip_ref.extractall(dest)
-
-    # the above works for all the files but if we have dailysfps we need to rename it
-    if url_head == "dailySFPS.zip":
-        # so this is actually a pain becuase we may have multiople dailysfps in the downloads
-        os.rename("dailySFPS.txt", "test.txt")
-
-
-# url_head = "dailySFPS.zip"
-# download_unzip_gm(url_head)
-
-
-# seems to work fine
-##############################################################################
-##############################################################################
-
 # so lets see we have a couple of options here so for all but the daily files
 # all I need to do is run get file, i give it the url, which give me the name of the file
 # it will always go to downloads, and then it always gets put in the same place so tercnically
@@ -142,36 +101,81 @@ def download_unzip_gm(url_head):
 import os
 import glob
 import time
+import datetime
 
 
-def find_most_recent_file(directory, partial_name):
-    """Finds the most recent file in a directory with a partial name match."""
+# so here we are dealing with the dailySFPS
+def dailys():
+    directory = "C:/Users/micha/Downloads/"
+    partial_name = "dailySFPS"
 
-    # print(os.path.join(directory, f"{partial_name}*"))
+    # make the path to file of all dailySPFS zip files
+    path = directory + partial_name + "*" + ".zip"
 
-    path = directory + partial_name + "*"
-    print("------")
-
+    # put them in an array or list I guess
     files = glob.glob(path)
 
-    print(files)
-
-    print("------")
-    # Am I supposed to do this all the time??
-    if not files:
-        return None
-
+    # get the most recemt one
     most_recent_file = max(files, key=os.path.getmtime)
-    return most_recent_file
+
+    # here we are getting ready to unzip
+    dest = "C:/Users/micha/capstoneTest/"
+
+    # then just unzipfile and place it where we want
+    with zipfile.ZipFile(most_recent_file, "r") as zip_ref:
+        # this file will still be called dailySFPS.txt
+        zip_ref.extractall(dest)
+
+    # get todays date and time
+    now = datetime.datetime.now()
+
+    # get YYYYMM
+    formatted_datetime = now.strftime("%Y%m")
+
+    # make entire title
+    new_title = "monthlySFPS_" + formatted_datetime + ".txt"
+
+    # check to see if the file already exists
+    if os.path.exists(new_title):
+        # if so it should be an oldre version remove it
+        os.remove(new_title)
+    # then we just need to be able to rename it correctly
+    os.rename("dailySFPS.txt", new_title)
 
 
-# Example usage
-directory_path = "C:/Users/micha/Downloads/"
-partial_file_name = "dailySFPS"
+# function 2 so
 
-most_recent = find_most_recent_file(directory_path, partial_file_name)
+import zipfile
+import os
 
-if most_recent:
-    print("Most recent file:", most_recent)
-else:
-    print("No matching files found.")
+# putting it all together
+
+
+def download_unzip_gm(url_head):
+    # so this downloads the file to C:/Users/micha/Downloads/
+    get_file_gm(url_head)
+
+    # so the source and destionation should never change, well the source changes a bit
+    # but we are given the change
+    src = "C:/Users/micha/Downloads/" + url_head
+    # NEED TO CHANGE THIS WHEN PUT BACK WITH REGULAR CODE
+    dest = "C:/Users/micha/capstoneTest/"
+
+    # check to see if it the dailySFPS
+    if url_head == "dailySFPS.zip":
+        # if so need to call it's own special function
+        dailys()
+    # if not we can just unzip and
+    else:
+        # then just unzipfile and place it where we want
+        with zipfile.ZipFile(src, "r") as zip_ref:
+            zip_ref.extractall(dest)
+
+
+# url_head = "dailySFPS.zip"
+url_head = "platmonPPS_202412.zip"
+
+download_unzip_gm(url_head)
+
+
+# seems to work fine
