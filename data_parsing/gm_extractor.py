@@ -19,6 +19,20 @@ import zipfile
 
 import sys
 
+print("---------")
+print(sys.path[0])
+
+
+sys.path.append("C:/Users/micha/capstoneTest/classwork")
+
+print("---------")
+
+import congestion
+
+print(sys.path)
+
+
+ddd
 # sys.path.insert(1, "capstoneTest")
 
 
