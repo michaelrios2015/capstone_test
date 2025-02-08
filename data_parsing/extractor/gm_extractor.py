@@ -19,91 +19,17 @@ import zipfile
 
 import sys
 
-print("---------")
-print(sys.path[0])
+# get the file above so I can search thropugh parent directory
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
+from helpers import get_file
 
-sys.path.append("C:/Users/micha/capstoneTest/classwork")
-
-print("---------")
-
-import congestion
+# from helpers import passwords
 
 print(sys.path)
 
-
-ddd
-# sys.path.insert(1, "capstoneTest")
-
-
-# import capstoneTest.password.passwords.email
-
-import passwords as p
-
-
 ####################################################################################################
 ####################################################################################################
-
-
-# this will open the ginnie mae urls and which causes them to be downloaded to my downloads
-# this only ginnie mae files
-def get_file_gm(url_head):
-
-    # this is how all ginne mae files begin
-    url_base = "https://bulk.ginniemae.gov/protectedfiledownload.aspx?dlfile=data_bulk/"
-    # this will be our acyual url
-    url = url_base + url_head
-    # selecting Firefox as the browser
-    # for reasons unknow to me Chrome did not work, seemed to work but download failed
-    driver = webdriver.Firefox()
-
-    # opening link in the browser
-    driver.get(url)
-
-    # find the email input field
-    email_input = driver.find_element(
-        By.NAME,
-        "ctl00$ctl45$g_174dfd7c_a193_4313_a2ed_0005c00273fc$ctl00$tbEmailAddress",
-    )
-
-    # enter in email
-    email_input.send_keys(p.email)
-
-    # find the submit button
-    submit = driver.find_element(
-        By.NAME,
-        "ctl00$ctl45$g_174dfd7c_a193_4313_a2ed_0005c00273fc$ctl00$btnQueryEmail",
-    )
-
-    # click the submit button
-    submit.click()
-
-    # we go to the next page
-    # find answer field
-    answer = driver.find_element(
-        By.NAME, "ctl00$ctl45$g_174dfd7c_a193_4313_a2ed_0005c00273fc$ctl00$tbAnswer"
-    )
-
-    # enter answer
-    answer.send_keys(p.answer)
-
-    # find verify button
-    verify = driver.find_element(
-        By.NAME,
-        "ctl00$ctl45$g_174dfd7c_a193_4313_a2ed_0005c00273fc$ctl00$btnAnswerSecret",
-    )
-
-    # click verify button
-    verify.click()
-
-    # quit
-    driver.quit()
-
-    # url_base = "https://bulk.ginniemae.gov/protectedfiledownload.aspx?dlfile=data_bulk/"
-    # url_head = "monthlySFPS_202412.zip"
-
-    # seemes to work fine
-    # get_file_gm(url_head)
 
 
 ####################################################################################
@@ -167,7 +93,8 @@ def dailys():
 
 def download_unzip_gm(url_head):
     # so this downloads the file to C:/Users/micha/Downloads/
-    get_file_gm(url_head)
+    get_file.get_file_gm(url_head)
+    # h.get_file.get_file_gm(url_head)
 
     # here we look at the file we want
     src = "C:/Users/micha/Downloads/" + url_head
@@ -188,11 +115,13 @@ url_heads = [
     "monthlySFPS_202412.zip",
     "platcoll_202412.zip",
 ]
-# url_head = "platmonPPS_202412.zip"
 
-for url in url_heads:
-    # print(url)
-    download_unzip_gm(url)
+url = "platmonPPS_202412.zip"
+download_unzip_gm(url)
+
+# for url in url_heads:
+#     # print(url)
+#     download_unzip_gm(url)
 
 
 # seems to work fine

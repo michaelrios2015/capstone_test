@@ -1,3 +1,10 @@
 data_parsing/passwords.py
 __pycache__/
-data/
+
+data/input/*
+
+!data/input/.gitkeep
+
+data/output/*
+
+!data/output/.gitkeep
