@@ -12,7 +12,15 @@ from selenium.webdriver.common.by import By
 
 # all the other libraries
 import os
-import passwords as p
+
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+
+print(sys.path)
+
+
+from secret import passwords
 
 ####################################################################################################
 ####################################################################################################
@@ -40,7 +48,7 @@ def get_file_gm(url_head):
     )
 
     # enter in email
-    email_input.send_keys(p.email)
+    email_input.send_keys(passwords.email)
 
     # find the submit button
     submit = driver.find_element(
@@ -58,7 +66,7 @@ def get_file_gm(url_head):
     )
 
     # enter answer
-    answer.send_keys(p.answer)
+    answer.send_keys(passwords.answer)
 
     # find verify button
     verify = driver.find_element(
@@ -78,7 +86,7 @@ def get_file_gm(url_head):
 # function ended just some test stuff
 
 # # url_base = "https://bulk.ginniemae.gov/protectedfiledownload.aspx?dlfile=data_bulk/"
-# url_head = "monthlySFPS_202412.zip"
+url_head = "monthlySFPS_202412.zip"
 
-# # seemes to work fine
-# get_file_gm(url_head)
+# seemes to work fine
+get_file_gm(url_head)
