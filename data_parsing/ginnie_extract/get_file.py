@@ -1,9 +1,4 @@
-# so I want to automate the downloading of the ginnie mae files
-# for the code I wrote I use pools, platinums, platcols...these are all super simple since they are simnply
-# download then moved from the download file to the file i need them in I mean technically they could stay in the download folder
-# dailySPFS are the only hard one, I will usually have a bunch of tehse saved, so I need to find the newest on, unzip that
-# then rename to the correct date
-
+# this opens and downloads the desired ginnie mae file for me
 
 # importing webdriver from selenium
 from selenium import webdriver
@@ -12,13 +7,9 @@ from selenium.webdriver.common.by import By
 
 # all the other libraries
 import os
-
 import sys
 
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-
-print(sys.path)
-
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 
 from secret import passwords
 
@@ -26,8 +17,6 @@ from secret import passwords
 ####################################################################################################
 
 
-# this will open the ginnie mae urls and which causes them to be downloaded to my downloads
-# this only ginnie mae files
 def get_file_gm(url_head):
 
     # this is how all ginne mae files begin
@@ -83,10 +72,10 @@ def get_file_gm(url_head):
 
 ###########################################################################################
 ###########################################################################################
-# function ended just some test stuff
+# # function ended just some test stuff
 
-# # url_base = "https://bulk.ginniemae.gov/protectedfiledownload.aspx?dlfile=data_bulk/"
-url_head = "monthlySFPS_202412.zip"
+# # # url_base = "https://bulk.ginniemae.gov/protectedfiledownload.aspx?dlfile=data_bulk/"
+# url_head = "monthlySFPS_202412.zip"
 
-# seemes to work fine
-get_file_gm(url_head)
+# # seemes to work fine
+# get_file_gm(url_head)

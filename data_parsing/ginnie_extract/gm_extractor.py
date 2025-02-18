@@ -1,28 +1,18 @@
-# we have automated teh downloading of the ginnie mae files
-# most were straight forward but the dailySPFS required a bit of work
-
-# importing webdriver from selenium
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-
-
-# all the other libraries
 import os
 import sys
 
-# get the file above so I can search thropugh parent directory
-# not sure if I am still using this need to test
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
+# sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
-print(sys.path)
+# from get_file import get_file_gm
+# from daily import dailys, extract_file
 
-
-# so now my helper functions are all in a seperate folder
-# from secret import passwords
-from helpers import *
+import get_file
+import daily
 
 
-# So my one main function.. should it be called main I am not entirely sure
+# So this will download my ginnie mae fill and put it in the right folder
 def download_unzip_gm(url_head):
     # so this downloads the file to C:/Users/micha/Downloads/
     get_file.get_file_gm(url_head)
@@ -39,6 +29,11 @@ def download_unzip_gm(url_head):
         # then just unzipfile and place it where we want
         daily.extract_file(src)
 
+
+################################################################################################
+################################################################################################
+
+# just some tests
 
 url_heads = [
     "dailySFPS.zip",
