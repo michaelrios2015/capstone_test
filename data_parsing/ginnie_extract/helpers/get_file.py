@@ -9,8 +9,8 @@ from selenium.webdriver.common.by import By
 import os
 import sys
 
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
-
+# This is so it can find secrets
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 from secret import passwords
 
 ####################################################################################################

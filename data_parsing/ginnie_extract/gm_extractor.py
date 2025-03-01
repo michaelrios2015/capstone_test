@@ -8,8 +8,7 @@ import sys
 # from get_file import get_file_gm
 # from daily import dailys, extract_file
 
-import get_file
-import daily
+from helpers import *
 
 
 # So this will download my ginnie mae fill and put it in the right folder
@@ -18,7 +17,7 @@ def download_unzip_gm(url_head):
     get_file.get_file_gm(url_head)
 
     # here we look at the file we want
-    src = "C:/Users/micha/Downloads/" + url_head
+    src = "C:/Users/micha/Downloads/" + url_head + ".zip"
 
     # check to see if it the dailySFPS
     if url_head == "dailySFPS.zip":
@@ -36,14 +35,14 @@ def download_unzip_gm(url_head):
 # just some tests
 
 url_heads = [
-    "dailySFPS.zip",
-    "platmonPPS_202412.zip",
-    "monthlySFPS_202412.zip",
-    "platcoll_202412.zip",
+    "dailySFPS",
+    "platmonPPS_202412",
+    "monthlySFPS_202412",
+    "platcoll_202412",
 ]
 
-url = "dailySFPS.zip"
-download_unzip_gm(url)
+# url = "dailySFPS"
+# download_unzip_gm(url)
 
 # for url in url_heads:
 #     # print(url)
