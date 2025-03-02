@@ -1,6 +1,6 @@
 import psycopg2
 
-# connects to database
+# connects to database, right now test database
 conn = psycopg2.connect(
     database="test_cmo",
     user="postgres",

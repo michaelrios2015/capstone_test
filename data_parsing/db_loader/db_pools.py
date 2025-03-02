@@ -1,31 +1,5 @@
-import psycopg2
-
-# connects to database
-# conn = psycopg2.connect(
-#     database="test_cmo",
-#     user="postgres",
-#     password="JerryPine",
-#     host="localhost",
-#     port="5432",
-# )
-
+# the connection to the database I was able to centralize
 from conn_dets import conn
-
-# change this monthly #######################################################
-
-
-# data_path = "data/input/monthlySFPS_202501.txt"
-
-
-# date = data_path[-10:-6] + "-" + data_path[-6:-4] + "-01"
-
-# connection.conn
-
-# connection.conn.autocommit = True
-# cursor = connection.conn.cursor()
-
-# conn.autocommit = True
-# cursor = conn.cursor()
 
 
 def add_pools(date):
@@ -34,10 +8,9 @@ def add_pools(date):
     conn.autocommit = True
     cursor = conn.cursor()
 
-    # conn.autocommit = True
-    # cursor = conn.cursor()
-
+    # make the date work for sql
     date = date + "-01"
+
     # so if first need to delete the poolbodies from the current month, this will usually do nothing
     # but is needed as I add the daily files
     sql = (
@@ -50,6 +23,7 @@ def add_pools(date):
         + """;
     """
     )
+
     cursor.execute(sql)
 
     # then just read new poolbodies
@@ -120,4 +94,4 @@ def add_pools(date):
 ###############################################################################
 # testing
 
-add_pools("2025-01")
+# add_pools("2025-01")
