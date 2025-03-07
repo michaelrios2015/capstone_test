@@ -37,3 +37,28 @@ imported_modules = sys.modules.keys()
 # so I will supply a file and then the program should do the rest...abs
 
 file = "monthlySFPS_202501"
+file = "dailySFPS"
+file = "platmonPPS_202501"
+
+# "dailySFPS",
+# "platmonPPS_202412",
+# "monthlySFPS_202412",
+# "platcoll_202412",
+
+# so no matter which file we have it need to be extracted and the extractor
+# just needs the file name
+
+# gm_extractor.download_unzip_gm(file)
+
+# step two, check which file we have, so
+
+parts = file.split("_")
+print(parts)
+# so we just check the first part
+if parts[0] == "platmonPPS":
+    # then i need to send the date
+    # platinums.parse_plats(parts[1])
+    # then we need to reformat date
+    date = parts[1][:4] + "-" + parts[1][4:]
+    print(date)
+    # db_plats.add_plats(date)

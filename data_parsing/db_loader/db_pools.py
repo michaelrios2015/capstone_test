@@ -1,5 +1,6 @@
 # the connection to the database I was able to centralize
 from conn_dets import conn
+from date_c import date_conv
 
 
 def add_pools(date):
@@ -9,7 +10,10 @@ def add_pools(date):
     cursor = conn.cursor()
 
     # make the date work for sql
-    date = date + "-01"
+    # date = date + "-01"
+    date = date_conv(date)
+
+    # print(date)
 
     # so if first need to delete the poolbodies from the current month, this will usually do nothing
     # but is needed as I add the daily files
@@ -94,4 +98,4 @@ def add_pools(date):
 ###############################################################################
 # testing
 
-# add_pools("2025-01")
+add_pools("202501")
