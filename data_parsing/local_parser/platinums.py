@@ -1,11 +1,13 @@
 import csv
+import date_c
 
 
 def parse_plats(date):
 
     data_path = "data\input\platmonPPS_" + date + ".txt"
 
-    date = data_path[-10:-6] + "-" + data_path[-6:-4] + "-01"
+    # this the the date that will go into the database
+    date = date_c.date_conv(date)
 
     # reads in ginnie files take what i need and orders it
     with open(data_path, newline="") as csvfile:
@@ -95,4 +97,4 @@ def parse_plats(date):
 ################################################################################
 #  TESTING STUFF
 
-# parse_plats("202412")
+# parse_plats("202501")

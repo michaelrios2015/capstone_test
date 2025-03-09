@@ -8,9 +8,6 @@ def add_plats(date):
     conn.autocommit = True
     cursor = conn.cursor()
 
-    # make the date work for sql
-    date = date + "-01"
-
     # getting rid of the fake platniums
     sql = (
         """
@@ -90,4 +87,4 @@ def add_plats(date):
 ###############################################################################
 # testing
 
-# add_plats("2025-01")
+# add_plats("2025-01-01")

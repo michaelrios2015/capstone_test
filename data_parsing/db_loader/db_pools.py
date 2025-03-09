@@ -1,6 +1,5 @@
 # the connection to the database I was able to centralize
 from conn_dets import conn
-from date_c import date_conv
 
 
 def add_pools(date):
@@ -8,10 +7,6 @@ def add_pools(date):
     # what is autocommit
     conn.autocommit = True
     cursor = conn.cursor()
-
-    # make the date work for sql
-    # date = date + "-01"
-    date = date_conv(date)
 
     # print(date)
 
@@ -98,4 +93,4 @@ def add_pools(date):
 ###############################################################################
 # testing
 
-add_pools("202501")
+# add_pools("2025-01-01")

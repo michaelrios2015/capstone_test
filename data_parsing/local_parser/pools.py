@@ -1,12 +1,14 @@
 import csv
 from datetime import datetime
+import date_c
 
 
 def parse_pools(date):
 
     data_path = "data/input/monthlySFPS_" + date + ".txt"
 
-    date = data_path[-10:-6] + "-" + data_path[-6:-4] + "-01"
+    # this the the date that will go into the database
+    date = date_c.date_conv(date)
 
     with open(data_path, newline="") as csvfile:
         data = list(csv.reader(csvfile, delimiter="|"))
@@ -116,4 +118,4 @@ def parse_pools(date):
 ################################################################################
 #  TESTING STUFF
 
-# parse_pools("202412")
+# parse_pools("202501")

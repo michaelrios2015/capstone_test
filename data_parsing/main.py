@@ -1,64 +1,57 @@
 import sys
 import os
-
+import datetime
 
 # so I need to tell it to work... so I have a subfolder
 sys.path.append(os.path.join(os.path.dirname(__file__), "ginnie_extract"))
 sys.path.append(os.path.join(os.path.dirname(__file__), "db_loader"))
+sys.path.append(os.path.join(os.path.dirname(__file__), "local_parser"))
 
 # print(sys.path)
-
+# we import everything from the subfolders
 from ginnie_extract import *
 from local_parser import *
 from db_loader import *
 
-# import ginnie_extract
 
-imported_modules = sys.modules.keys()
-# print(imported_modules)
+# putting them all togther
+def download_parse_db(file):
+
+    # so if it's a dailySPFS we will get the date from the daily function
+    date = gm_extractor.download_unzip_gm(file)
+
+    # here we just check and if it is not daily then we get the name and date from the file
+    if file != "dailySFPS":
+        name, date = file.split("_")
+        # print(name, date)
+    # it is a daily so just intailize name to monthSFPS, and it will be fine because date is different
+    else:
+        name = "monthlySFPS"
+        # print(name, date)
+
+    # date for the database
+    date_db = date_c.date_conv(date)
+
+    # and we have three options
+    if name == "platmonPPS":
+        # we parse the data,
+        platinums.parse_plats(date)
+        # then put data into database
+        db_plats.add_plats(date_db)
+    elif name == "monthlySFPS":
+        # should work for dailys as well same thing just different dates
+        pools.parse_pools(date)
+        db_pools.add_pools(date_db)
+    elif name == "platcoll":
+        platcolls.parser_platcolls(date)
+        db_platcolls.add_platcoll(date_db)
 
 
-# print(sys.path)
-
-
-# gm_extractor.download_unzip_gm("platcoll_202501")
-# platcolls.parser_platcolls("202501")
-# db_platcolls.add_platcoll("2025-01")
-
-# gm_extractor.download_unzip_gm("monthlySFPS_202501")
-# pools.parse_pools("202501")
-# db_pools.add_pools("2025-01")
-
-# gm_extractor.download_unzip_gm("platmonPPS_202501")
-# platinums.parse_plats("202501")
-# db_plats.add_plats("2025-01")
-
-
-# so I will supply a file and then the program should do the rest...abs
-
+# seems to work, not sure why it did noty work when just put in a for loop..
+# that may come back to haught me at some point
 file = "monthlySFPS_202501"
-file = "dailySFPS"
-file = "platmonPPS_202501"
+# file = "platmonPPS_202501"
+# file = "platcoll_202501"
+# file = "dailySFPS"
 
-# "dailySFPS",
-# "platmonPPS_202412",
-# "monthlySFPS_202412",
-# "platcoll_202412",
-
-# so no matter which file we have it need to be extracted and the extractor
-# just needs the file name
-
-# gm_extractor.download_unzip_gm(file)
-
-# step two, check which file we have, so
-
-parts = file.split("_")
-print(parts)
-# so we just check the first part
-if parts[0] == "platmonPPS":
-    # then i need to send the date
-    # platinums.parse_plats(parts[1])
-    # then we need to reformat date
-    date = parts[1][:4] + "-" + parts[1][4:]
-    print(date)
-    # db_plats.add_plats(date)
+# download_parse_db(file)

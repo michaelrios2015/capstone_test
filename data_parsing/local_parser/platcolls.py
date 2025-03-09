@@ -1,4 +1,5 @@
 import csv
+import date_c
 
 
 def parser_platcolls(date):
@@ -12,8 +13,8 @@ def parser_platcolls(date):
 
     data = []
 
-    # date = (sys.argv[1])[-10:-6] + '-' + (sys.argv[1])[-6:-4] + '-01'
-    date = file[-10:-6] + "-" + file[-6:-4] + "-01"
+    # this the the date that will go into the database
+    date = date_c.date_conv(date)
 
     # print(date)
 
@@ -43,4 +44,4 @@ def parser_platcolls(date):
 ################################################################################
 #  TESTING STUFF
 
-# parser_platcolls("202412")
+# parser_platcolls("202501")

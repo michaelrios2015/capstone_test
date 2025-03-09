@@ -14,15 +14,17 @@ from helpers import *
 # So this will download my ginnie mae fill and put it in the right folder
 def download_unzip_gm(url_head):
     # so this downloads the file to C:/Users/micha/Downloads/
+    url_head += ".zip"
     get_file.get_file_gm(url_head)
 
     # here we look at the file we want
-    src = "C:/Users/micha/Downloads/" + url_head + ".zip"
+    src = "C:/Users/micha/Downloads/" + url_head
 
     # check to see if it the dailySFPS
     if url_head == "dailySFPS.zip":
         # if so need to call it's own special function
-        daily.dailys()
+        date = daily.dailys()
+        return date
     # if not we can just unzip and
     else:
         # then just unzipfile and place it where we want
@@ -36,9 +38,9 @@ def download_unzip_gm(url_head):
 
 url_heads = [
     "dailySFPS",
-    "platmonPPS_202412",
-    "monthlySFPS_202412",
-    "platcoll_202412",
+    "platmonPPS_202501",
+    "monthlySFPS_202501",
+    "platcoll_202501",
 ]
 
 # url = "dailySFPS"

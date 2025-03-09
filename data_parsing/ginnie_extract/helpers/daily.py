@@ -27,6 +27,7 @@ def dailys():
 
     # put them in an array or list I guess
     files = glob.glob(path)
+    # print(files)
 
     # get the most recemt one
     most_recent_file = max(files, key=os.path.getmtime)
@@ -49,6 +50,8 @@ def dailys():
         os.remove(new_title)
     # then we just need to be able to rename it correctly
     os.rename("data\input\dailySFPS.txt", new_title)
+
+    return formatted_datetime
 
 
 # dailys()
