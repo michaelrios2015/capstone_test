@@ -20,10 +20,11 @@ def download_unzip_gm(url_head):
     # here we look at the file we want
     src = "C:/Users/micha/Downloads/" + url_head
 
-    # check to see if it the dailySFPS
-    if url_head == "dailySFPS.zip":
-        # if so need to call it's own special function
-        date = daily.dailys()
+    # check to see if it the dailySFPS or dailyllmni
+    if url_head == "dailySFPS.zip" or url_head == "dailyllmni.zip":
+        # if so need to call it's own special function also need to earse the .zip
+        date = daily.dailys(url_head[:-4])
+        # print(url_head[:-4])
         return date
     # if not we can just unzip and
     else:
@@ -36,14 +37,15 @@ def download_unzip_gm(url_head):
 
 # just some tests
 
-url_heads = [
-    "dailySFPS",
-    "platmonPPS_202501",
-    "monthlySFPS_202501",
-    "platcoll_202501",
-]
+# url_heads = [
+#     "dailySFPS",
+#     "platmonPPS_202501",
+#     "monthlySFPS_202501",
+#     "platcoll_202501",
+# ]
 
 # url = "dailySFPS"
+# url = "dailyllmni"
 # download_unzip_gm(url)
 
 # for url in url_heads:

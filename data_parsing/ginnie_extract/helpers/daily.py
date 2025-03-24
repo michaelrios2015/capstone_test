@@ -17,13 +17,14 @@ def extract_file(src):
 ######################################################################################################################################
 
 
-# so here we are dealing with the dailySFPS
-def dailys():
+# so here we are dealing with the dailySFPS or dailyllmni
+# both of whihc do not come with dates
+def dailys(file):
+    # this first part is the same
     directory = "C:/Users/micha/Downloads/"
-    partial_name = "dailySFPS"
 
-    # make the path to file of all dailySPFS zip files
-    path = directory + partial_name + "*" + ".zip"
+    # make the path to file of all dailySPFS or dailyllmni zip files
+    path = directory + file + "*" + ".zip"
 
     # put them in an array or list I guess
     files = glob.glob(path)
@@ -31,6 +32,7 @@ def dailys():
 
     # get the most recemt one
     most_recent_file = max(files, key=os.path.getmtime)
+    # print(most_recent_file)
 
     # then just unzipfile and place it where we want
     extract_file(most_recent_file)
@@ -41,17 +43,24 @@ def dailys():
     # get YYYYMM
     formatted_datetime = now.strftime("%Y%m")
 
-    # make entire title
-    new_title = "data\input\monthlySFPS_" + formatted_datetime + ".txt"
+    # so if it is dailySFPS we need to do a bunch of stuff to rename it
+    if file == "dailySFPS":
 
-    # check to see if the file already exists
-    if os.path.exists(new_title):
-        # if so it should be an oldre version remove it
-        os.remove(new_title)
-    # then we just need to be able to rename it correctly
-    os.rename("data\input\dailySFPS.txt", new_title)
+        # make entire title
+        new_title = "data\input\monthlySFPS_" + formatted_datetime + ".txt"
+
+        # check to see if the file already exists
+        if os.path.exists(new_title):
+            # if so it should be an oldre version remove it
+            os.remove(new_title)
+        # then we just need to be able to rename it correctly
+        os.rename("data\input\dailySFPS.txt", new_title)
 
     return formatted_datetime
 
 
-# dailys()
+###########################################################################################
+###########################################################################################
+# TEST
+
+# dailys("dailyllmni")
