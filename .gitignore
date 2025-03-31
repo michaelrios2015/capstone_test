@@ -2,10 +2,10 @@ secret
 
 __pycache__/
 
-data/input/*
+biz_day/data/input/*
 
-!data/input/.gitkeep
+!biz_day/data/input/.gitkeep
 
-data/output/*
+biz_day/data/output/*
 
-!data/output/.gitkeep
+!biz_day/data/output/.gitkeep
