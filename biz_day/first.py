@@ -15,7 +15,7 @@ from data_parsing import *
 # which would be the dailySFSPS files
 file = "dailySFPS"
 
-download_parse_db(file)
+getFiles.download_parse_db(file)
 
 
 # thene we would sign into the cmos_bulder database and call this
