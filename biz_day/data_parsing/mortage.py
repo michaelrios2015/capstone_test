@@ -43,7 +43,7 @@ def cprs4thAll(date):
     db_cpr4th.add_cprs4th(date_db)
 
 
-# cprs4thAll("202502")
+# cprs4thAll("202503")
 
 
 # all the 6th day stuff
@@ -65,7 +65,7 @@ def cprs6thAll(date):
     db_cpr6th.add_cprs6th(date_db)
 
 
-# cprs6thAll("202502")
+# cprs6thAll("202503")
 
 
 def fhavaAll(date):
@@ -83,4 +83,85 @@ def fhavaAll(date):
     db_fhava.add_fhava(date_db)
 
 
-# fhavaAll("202502")
+# fhavaAll("202503")
+
+
+############################################
+
+# streamline
+
+
+def streamlinerAll(date):
+
+    # see if we have files, if not get them
+    if not (os.path.exists("biz_day/data/input/GNMA_MBS_LL_MON_" + date + "_001.txt")):
+        gm_extractor.download_unzip_gm("llmon1_" + date)
+
+    if not (os.path.exists("biz_day/data/input/GNMA_MBS_LL_MON_" + date + "_002.txt")):
+        gm_extractor.download_unzip_gm("llmon2_" + date)
+
+    # this can only be the newest one...
+    if not (os.path.exists("biz_day/data/input/dailyllmni.txt")):
+        gm_extractor.download_unzip_gm("dailyllmni")
+
+    # this last file is from the previouys month
+    prev_month = month.prev_month(date)
+
+    if not (os.path.exists("biz_day/data/input/llpaymhist_" + prev_month + ".txt")):
+        gm_extractor.download_unzip_gm("llpaymhist_" + prev_month)
+
+    # process data and get next month
+    next_month = streamline_file.streamline(date)
+
+    # print(next_month)
+
+    # put it into the database as one month ahead,
+    # not sure if this is completely right but is how the database is currently set up
+    db_streamliner.add_streamliner(next_month)
+
+
+# streamlinerAll("202502")
+
+
+############################################
+
+# prepay
+
+date = "202502"
+
+# step one get files
+
+# we need previous month
+
+prev_month = month.prev_month(date)
+
+print(prev_month)
+
+if not (
+    os.path.exists("biz_day/data/input/GNMA_MBS_LL_MON_" + prev_month + "_001.txt")
+):
+    gm_extractor.download_unzip_gm("llmon1_" + prev_month)
+
+
+if not (
+    os.path.exists("biz_day/data/input/GNMA_MBS_LL_MON_" + prev_month + "_002.txt")
+):
+    gm_extractor.download_unzip_gm("llmon2_" + prev_month)
+
+
+# data_url_2 = "https://bulk.ginniemae.gov/protectedfiledownload.aspx?dlfile=data_bulk/llmon1_202502.zip"
+
+
+# data_url_3 = "https://bulk.ginniemae.gov/protectedfiledownload.aspx?dlfile=data_bulk/llmon2_202502.zip"
+
+# mLoanFileOld = {
+#     # two from the past month
+#     "GNMA_MBS_LL_MON_202501_001.txt",
+#     "GNMA_MBS_LL_MON_202501_002.txt",
+#     # this is the current month
+#     "dailyllmni.txt",
+# }
+
+# # Files published 6th business day of month n+1
+# # current month
+# mLoanFile = {"GNMA_MBS_LL_MON_202502_001.txt", "GNMA_MBS_LL_MON_202502_002.txt"}
