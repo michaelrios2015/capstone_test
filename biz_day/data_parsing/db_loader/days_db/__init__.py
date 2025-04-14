@@ -1,1 +1,1 @@
-__all__ = ["procDaily"]
+__all__ = ["procDaily", "truncate"]

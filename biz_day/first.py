@@ -29,13 +29,15 @@ getFiles.download_parse_db(file)
 print("downloaded new data")
 
 # process the new dailies
-procDaily.add_daily("2025-02-01", "true")
+procDaily.add_daily("2025-03-01", "true")
 
 
 # Then add this to rge other database
 
 # ech of these can be a function seems a little like overkill but do mix and match them a bit
 # TRUNCATE ginnies;
+
+truncate.deleteGinnies()
 
 ##########################################################################################
 
