@@ -80,7 +80,7 @@ def add_platcoll(date):
         print()
 
     conn.commit()
-    conn.close()
+    # conn.close()
 
 
 ###############################################################################

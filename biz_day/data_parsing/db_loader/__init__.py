@@ -1,1 +1,1 @@
-__all__ = ["conn_dets"]
+__all__ = ["conn_dets", "conn_two"]

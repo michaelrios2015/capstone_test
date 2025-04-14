@@ -120,48 +120,54 @@ def streamlinerAll(date):
     db_streamliner.add_streamliner(next_month)
 
 
-# streamlinerAll("202502")
+# streamlinerAll("202503")
 
 
 ############################################
 
 # prepay
 
-date = "202502"
 
-# step one get files
+def prepayAll(date):
 
-# we need previous month
+    # step one get files
 
-prev_month = month.prev_month(date)
+    # we need previous month
 
-print(prev_month)
+    prev_month = month.prev_month(date)
 
-if not (
-    os.path.exists("biz_day/data/input/GNMA_MBS_LL_MON_" + prev_month + "_001.txt")
-):
-    gm_extractor.download_unzip_gm("llmon1_" + prev_month)
+    # print(prev_month)
+    # get files
+    if not (
+        os.path.exists("biz_day/data/input/GNMA_MBS_LL_MON_" + prev_month + "_001.txt")
+    ):
+        gm_extractor.download_unzip_gm("llmon1_" + prev_month)
+
+    if not (
+        os.path.exists("biz_day/data/input/GNMA_MBS_LL_MON_" + prev_month + "_002.txt")
+    ):
+        gm_extractor.download_unzip_gm("llmon2_" + prev_month)
+
+    # so unless I want to start dating this file I cannot be sure it is up to date and should just
+    # download it again
+    gm_extractor.download_unzip_gm("dailyllmni")
+
+    if not (os.path.exists("biz_day/data/input/GNMA_MBS_LL_MON_" + date + "_001.txt")):
+        gm_extractor.download_unzip_gm("llmon1_" + date)
+
+    if not (os.path.exists("biz_day/data/input/GNMA_MBS_LL_MON_" + date + "_002.txt")):
+        gm_extractor.download_unzip_gm("llmon2_" + date)
+
+    # process the files and fet date for database
+    next_month = prepay_file.prepay(date)
+
+    # print(next_month)
+
+    # add to database
+    db_prepay.add_prepay(next_month)
 
 
-if not (
-    os.path.exists("biz_day/data/input/GNMA_MBS_LL_MON_" + prev_month + "_002.txt")
-):
-    gm_extractor.download_unzip_gm("llmon2_" + prev_month)
+# test
 
-
-# data_url_2 = "https://bulk.ginniemae.gov/protectedfiledownload.aspx?dlfile=data_bulk/llmon1_202502.zip"
-
-
-# data_url_3 = "https://bulk.ginniemae.gov/protectedfiledownload.aspx?dlfile=data_bulk/llmon2_202502.zip"
-
-# mLoanFileOld = {
-#     # two from the past month
-#     "GNMA_MBS_LL_MON_202501_001.txt",
-#     "GNMA_MBS_LL_MON_202501_002.txt",
-#     # this is the current month
-#     "dailyllmni.txt",
-# }
-
-# # Files published 6th business day of month n+1
-# # current month
-# mLoanFile = {"GNMA_MBS_LL_MON_202502_001.txt", "GNMA_MBS_LL_MON_202502_002.txt"}
+# date = "202503"
+# prepayAll(date)

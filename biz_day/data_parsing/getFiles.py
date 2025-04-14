@@ -49,9 +49,9 @@ def download_parse_db(file):
 
 # seems to work, not sure why it did noty work when just put in a for loop..
 # that may come back to haught me at some point
-file = "monthlySFPS_202503"
-# file = "platmonPPS_202501"
-# file = "platcoll_202502"
+# file = "monthlySFPS_202503"
+# file = "platmonPPS_202503"
+# file = "platcoll_202503"
 # file = "dailySFPS"
 
-download_parse_db(file)
+# download_parse_db(file)
