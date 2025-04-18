@@ -14,18 +14,30 @@ def add_cprs4th(date):
     conn.autocommit = True
     cursor = conn.cursor()
 
-    # # if I want to earse these guys I also need to erase cdrs... going to leave it for the time being
-    # # This is only so I can rerun the program durring testing
-    # sql = (
-    #     """
-    # DELETE FROM actualcprs
-    # WHERE date = """
-    #     + date
-    #     + """;
-    # """
-    # )
+    # ereasing so I can test
+    sql = (
+        """
+    DELETE FROM actualcprs
+    WHERE date = """
+        + date
+        + """;
+    """
+    )
 
-    # cursor.execute(sql)
+    cursor.execute(sql)
+
+    #################################################
+
+    sql = (
+        """
+    DELETE FROM actualcdrs
+    WHERE date = """
+        + date
+        + """;
+    """
+    )
+
+    cursor.execute(sql)
 
     # create the temp table
     sql = """

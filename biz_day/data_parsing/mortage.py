@@ -26,12 +26,17 @@ from davids_db import *
 def cprs4thAll(date):
     # get data
     # so these are working fine, technically we also need the
-    gm_extractor.download_unzip_gm("llmonliq_" + date)
-    gm_extractor.download_unzip_gm("nimonSFPS_" + date)
+    if not (os.path.exists("biz_day/data/input/llmonliq_" + date + ".txt")):
+        gm_extractor.download_unzip_gm("llmonliq_" + date)
+
+    if not (os.path.exists("biz_day/data/input/nimonSFPS_" + date + ".txt")):
+        gm_extractor.download_unzip_gm("nimonSFPS_" + date)
 
     # we should already have this but including it just in case
     prev_month = month.prev_month(date)
-    gm_extractor.download_unzip_gm("monthlySFPS_" + prev_month)
+
+    if not (os.path.exists("biz_day/data/input/monthlySFPS_" + date + ".txt")):
+        gm_extractor.download_unzip_gm("monthlySFPS_" + prev_month)
 
     # here we process the data
     cprsIntial.cprs4th(date)

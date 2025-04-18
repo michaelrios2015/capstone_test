@@ -8,35 +8,38 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from conn_two import connTwo
 
 
-# just here for testing
-import truncate
+# # just here for testing
+# import truncate
 
-truncate.deleteGinnies()
-
-
-# def addGinnies():
+# truncate.deleteGinnies()
 
 
-connTwo.autocommit = True
-cursorTwo = connTwo.cursor()
+def addDailies():
+
+    connTwo.autocommit = True
+    cursorTwo = connTwo.cursor()
+
+    # delete Ginnies from cmos database
+    sql = """
+    COPY ginnies FROM 'C:\\Users\\Public\\test_dailypoolswithcurrfloatM' DELIMITER ','  CSV HEADER;
 
 
-# delete Ginnies from cmos database
-sql = """
-    COPY ginnies FROM 'C:\\Users\\Public\\test_ginnieplatswithcurrfloatM' DELIMITER ','  CSV HEADER; 
+    COPY ginnies FROM 'C:\\Users\\Public\\test_dailypoolswithcurrfloatX' DELIMITER ','  CSV HEADER;  
 
-    COPY ginnies FROM 'C:\\Users\\Public\\test_ginnieplatswithcurrfloatX' DELIMITER ','  CSV HEADER;
 
-    COPY ginnies FROM 'C:\\Users\\Public\\test_poolswithcurrfloatM' DELIMITER ','  CSV HEADER;   
+    COPY ginnies FROM 'C:\\Users\\Public\\test_dailypoolswithcurrfloatJM' DELIMITER ','  CSV HEADER;
 
-    COPY ginnies FROM 'C:\\Users\\Public\\test_poolswithcurrfloatX' DELIMITER ','  CSV HEADER;
 
-    COPY ginnies FROM 'C:\\Users\\Public\\test_poolswithcurrfloatJM' DELIMITER ','  CSV HEADER;
+    COPY ginnies FROM 'C:\\Users\\Public\\test_dailypoolswithcurrfloatRG' DELIMITER ','  CSV HEADER;
+        """
 
-    COPY ginnies FROM 'C:\\Users\\Public\\test_poolswithcurrfloatRG' DELIMITER ','  CSV HEADER; """
+    cursorTwo.execute(sql)
 
-cursorTwo.execute(sql)
+    connTwo.commit()
 
-connTwo.commit()
+    print("dalies added")
 
-print("ginnies added")
+
+# testing
+
+# addDailies()

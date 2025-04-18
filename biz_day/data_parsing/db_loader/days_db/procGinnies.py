@@ -12,7 +12,7 @@ from conn_dets import conn
 
 # will take in date and a boolen for first business day or not
 # just uses stored procedure to process the new daily pools
-def proc_daily(date, first):
+def proc_ginnies(date, fed_date):
 
     conn.autocommit = True
     cursor = conn.cursor()
@@ -21,13 +21,15 @@ def proc_daily(date, first):
 
     date = "'" + date + "'"
 
+    fed_date = "'" + fed_date + "'"
+
     # delete FHAVA_2 this is only done so I can rerun the program for testing purposes
     sql = (
         """
-            call processdailydataforweb("""
+            call  processdataforweb("""
         + date
         + """, """
-        + first
+        + fed_date
         + """);
 
         """
@@ -38,10 +40,11 @@ def proc_daily(date, first):
     conn.commit()
     # conn.close()
 
-    print("processed dailies")
+    print("processed ginnies")
 
 
 # testing
 
-# date = "2025-02-01"
-# proc_daily(date, "true")
+# date = "2025-03-01"
+# fed_date = "2025-04-02"
+# proc_ginnies(date, fed_date)

@@ -9,34 +9,39 @@ from conn_two import connTwo
 
 
 # just here for testing
-import truncate
+# import truncate
 
-truncate.deleteGinnies()
-
-
-# def addGinnies():
+# truncate.deleteGinnies()
 
 
-connTwo.autocommit = True
-cursorTwo = connTwo.cursor()
+# adding the first day pools to the website database
+def addFirstDay():
+
+    connTwo.autocommit = True
+    cursorTwo = connTwo.cursor()
+
+    # delete Ginnies from cmos database
+    sql = """
+    COPY ginnies FROM 'C:\\Users\\Public\\test_1stbddailypoolswithcurrfloatM' DELIMITER ','  CSV HEADER;
 
 
-# delete Ginnies from cmos database
-sql = """
-    COPY ginnies FROM 'C:\\Users\\Public\\test_ginnieplatswithcurrfloatM' DELIMITER ','  CSV HEADER; 
+    COPY ginnies FROM 'C:\\Users\\Public\\test_1stbddailypoolswithcurrfloatX' DELIMITER ','  CSV HEADER;
 
-    COPY ginnies FROM 'C:\\Users\\Public\\test_ginnieplatswithcurrfloatX' DELIMITER ','  CSV HEADER;
 
-    COPY ginnies FROM 'C:\\Users\\Public\\test_poolswithcurrfloatM' DELIMITER ','  CSV HEADER;   
+    COPY ginnies FROM 'C:\\Users\\Public\\test_1stbddailypoolswithcurrfloatJM' DELIMITER ','  CSV HEADER;
 
-    COPY ginnies FROM 'C:\\Users\\Public\\test_poolswithcurrfloatX' DELIMITER ','  CSV HEADER;
 
-    COPY ginnies FROM 'C:\\Users\\Public\\test_poolswithcurrfloatJM' DELIMITER ','  CSV HEADER;
+    COPY ginnies FROM 'C:\\Users\\Public\\test_1stbddailypoolswithcurrfloatRG' DELIMITER ','  CSV HEADER;
+        """
 
-    COPY ginnies FROM 'C:\\Users\\Public\\test_poolswithcurrfloatRG' DELIMITER ','  CSV HEADER; """
+    cursorTwo.execute(sql)
 
-cursorTwo.execute(sql)
+    connTwo.commit()
+    # connTwo.close()
 
-connTwo.commit()
+    print("first day added")
 
-print("ginnies added")
+
+# TESTING
+
+# addFirstDay()
