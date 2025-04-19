@@ -16,24 +16,34 @@ from days_db import *
 from db_loader import *
 from local_parser import *
 
-# so on the 4th business day
 
-# we calcalulate the intial CPRS and add them to the database
+def fourthAll(date, fed_date):
 
-mortage.cprs4thAll("202503")
+    # so on the 4th business day
+    # we calcalulate the intial CPRS and add them to the database
+    cpr4th.cprs4thAll(date)
 
-# Then process our data for the sebsite
-procGinnies.proc_ginnies("2025-03-01", "2025-04-02")
+    # convert date to date for database
+    date = date_c.date_conv(date)
+
+    # Then process our data for the website, this is a stored procedure in my database
+    procGinnies.proc_ginnies(date, fed_date)
+
+    # Erase the ginnes
+    truncate.deleteGinnies()
+
+    # ##########################################################################################
+    # ADD THE ginnies back
+
+    ginnies.addGinnies()
+
+    dailys.addDailies()
+
+    firstDay.addFirstDay()
 
 
-# Erase the ginnes
-truncate.deleteGinnies()
+date = "202503"
+# will just calculate this by hand for now
+fed_date = "2025-04-02"
 
-# ##########################################################################################
-# ADD THE ginnies back
-
-ginnies.addGinnies()
-
-dailys.addDailies()
-
-firstDay.addFirstDay()
+fourthAll(date, fed_date)

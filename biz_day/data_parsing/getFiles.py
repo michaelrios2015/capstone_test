@@ -18,7 +18,12 @@ from indiv_db import *
 def download_parse_db(file):
 
     # so if it's a dailySPFS we will get the date from the daily function
-    date = gm_extractor.download_unzip_gm(file)
+
+    # just checking to see if we have already downloaded it, but always need to download dailySPFS and dailyllmni
+    if (file != "dailySFPS" or file != "dailyllmni") and not (
+        os.path.exists("biz_day/data/input/" + file + ".txt")
+    ):
+        date = gm_extractor.download_unzip_gm(file)
 
     # here we just check and if it is not daily then we get the name and date from the file
     if file != "dailySFPS":
