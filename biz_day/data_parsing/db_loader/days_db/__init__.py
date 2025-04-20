@@ -8,4 +8,8 @@ __all__ = [
     "procPlats",
     "procPlatFhas",
     "procCmos",
+    "floatSum",
+    "addCMO",
+    "predCPRS",
+    "procEarlyPlats",
 ]

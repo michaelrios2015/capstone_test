@@ -1,1 +1,1 @@
-__all__ = ["db_platcolls", "db_plats", "db_pools"]
+__all__ = ["db_platcolls", "db_plats", "db_pools", "db_feds"]

@@ -1,1 +1,1 @@
-__all__ = ["gm_extractor"]
+__all__ = ["gm_extractor", "getFed"]

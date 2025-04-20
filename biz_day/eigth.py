@@ -24,81 +24,85 @@ date = "202503"
 
 fed_date = "2025-04-02"
 
-# getFiles.download_parse_db("platmonPPS_" + date)
 
-# download platcolls
+def eigthAll(date, fed_date):
 
-# getFiles.download_parse_db("platcoll_" + date)
+    # download platinums
 
-db_date = date_c.date_conv("202503")
+    getFiles.download_parse_db("platmonPPS_" + date)
 
-# print(db_date)
+    # download platcolls
+
+    getFiles.download_parse_db("platcoll_" + date)
+
+    db_date = date_c.date_conv("202503")
+
+    # print(db_date)
+
+    ###########################################################
+
+    # process platinums, it's frustrating not seeing what is happening but it seems to work
+
+    procPlats.proc_plats(db_date)
+
+    ##############################################################
+
+    # process platfhavas
+
+    procPlatFhas.proc_plat_fhas(db_date)
+
+    # ##################################################
+
+    # pocess data for the web
+
+    procGinnies.proc_ginnies(db_date, fed_date)
+
+    ##################################################
+
+    # CMOS
+
+    procCmos.proc_cmos(db_date)
+
+    # ##############################################
+    # # start loading data
+
+    # TRUNCATE ginnies;
+
+    truncate.deleteGinnies()
+
+    # ##########################################################################################
+    # add back ginnies for float
+
+    ginnies.addGinnies()
+
+    # ######################################################
+
+    # # Calculate float
+
+    floatSum.float_sum(db_date)
+
+    # ###################################################
+
+    # # erease and reload cmos
+
+    addCMO.add_cmos()
+
+    # ###############################################
+
+    # # TRUNCATE ginnies again
+
+    truncate.deleteGinnies()
+
+    # ##########################################################################################
+    # add back ginnies and dailies
+
+    ginnies.addGinnies()
+
+    dailys.addDailies()
 
 
-###########################################################
+date = "202503"
 
-# process platinums, it's frustrating not seeing what is happening but it seems to work
+fed_date = "2025-04-02"
 
-# procPlats.proc_plats(db_date)
-
-##############################################################
-
-# platfhavas
-
-# procPlatFhas.proc_plat_fhas(db_date)
-
-# ##################################################
-
-# pocess data for the web
-
-# procGinnies.proc_ginnies(db_date, fed_date)
-
-
-##################################################
-
-# CMOS
-
-# procCmos.proc_cmos(db_date)
-
-# ##############################################
-# # start loading data
-
-# TRUNCATE ginnies;
-
-truncate.deleteGinnies()
-
-# ##########################################################################################
-
-ginnies.addGinnies()
-
-# ######################################################
-
-# # Calculate float
-# DELETE FROM sumoffloats where date = '2025-03-01';
-
-# # Call get_float_sum(date DATE)
-
-# # call get_float_sum('2025-03-01');
-
-# ###################################################
-
-# # erease and reload cmos
-
-# # TRUNCATE cmos;
-
-
-# # \COPY cmos FROM 'C:\Users\Public\cmodataforweb' DELIMITER ',' CSV HEADER;
-
-
-# ###############################################
-
-# # ech of these can be a function seems a little like overkill but do mix and match them a bit
-# # TRUNCATE ginnies;
-
-# truncate.deleteGinnies()
-
-# ##########################################################################################
-
-# ginnies.addGinnies()
-
-# dailys.addDailies()
+eigthAll(date, fed_date)
