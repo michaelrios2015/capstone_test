@@ -35,7 +35,7 @@ def add_cmos():
 
     connTwo.commit()
 
-    print("cmos trincated and re-added")
+    print("cmos truncated and re-added")
 
 
 # testing

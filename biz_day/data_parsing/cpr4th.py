@@ -35,7 +35,7 @@ def cprs4thAll(date):
     # we should already have this but including it just in case
     prev_month = month.prev_month(date)
 
-    if not (os.path.exists("biz_day/data/input/monthlySFPS_" + date + ".txt")):
+    if not (os.path.exists("biz_day/data/input/monthlySFPS_" + prev_month + ".txt")):
         gm_extractor.download_unzip_gm("monthlySFPS_" + prev_month)
 
     # here we process the data

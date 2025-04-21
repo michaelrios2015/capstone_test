@@ -37,7 +37,6 @@ def addFirstDay():
     cursorTwo.execute(sql)
 
     connTwo.commit()
-    # connTwo.close()
 
     print("first day added")
 

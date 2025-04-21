@@ -71,7 +71,6 @@ def pred_cprs(date):
     cursor.execute(sql)
 
     conn.commit()
-    # conn.close()
 
     print("predictions added")
 

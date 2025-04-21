@@ -54,7 +54,6 @@ def add_feds(date):
     print("\ncount = ", records[0][0])
 
     conn.commit()
-    conn.close()
 
 
 ############## TESTING ####################

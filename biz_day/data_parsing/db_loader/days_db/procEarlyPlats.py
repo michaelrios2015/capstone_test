@@ -58,6 +58,5 @@ def proc_early_plats(date):
     cursor.execute(sql)
 
     conn.commit()
-    # conn.close()
 
     print("processed early plats")

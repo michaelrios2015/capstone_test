@@ -34,7 +34,6 @@ def proc_plats(date):
     cursor.execute(sql)
 
     conn.commit()
-    # conn.close()
 
     print("processed plats")
 

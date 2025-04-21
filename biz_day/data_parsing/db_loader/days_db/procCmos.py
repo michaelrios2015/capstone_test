@@ -1,5 +1,3 @@
-# used for first day to add daily pools
-
 import sys
 import os
 
@@ -10,8 +8,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from conn_dets import conn
 
 
-# will take in date and a boolen for first business day or not
-# just uses stored procedure to process the new daily pools
+# uses stored procedure to process cmos
 def proc_cmos(date):
 
     conn.autocommit = True
@@ -34,6 +31,5 @@ def proc_cmos(date):
     cursor.execute(sql)
 
     conn.commit()
-    # conn.close()
 
     print("processed cmos")

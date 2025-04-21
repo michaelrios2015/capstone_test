@@ -12,4 +12,5 @@ __all__ = [
     "addCMO",
     "predCPRS",
     "procEarlyPlats",
+    "feds_db",
 ]

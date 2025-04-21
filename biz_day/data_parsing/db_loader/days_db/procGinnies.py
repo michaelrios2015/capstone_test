@@ -38,7 +38,6 @@ def proc_ginnies(date, fed_date):
     cursor.execute(sql)
 
     conn.commit()
-    # conn.close()
 
     print("processed ginnies")
 

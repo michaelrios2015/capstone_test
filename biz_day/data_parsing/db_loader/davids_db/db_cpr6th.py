@@ -80,7 +80,6 @@ def add_cprs6th(date):
     print("\ncount = ", records[0][0])
 
     conn.commit()
-    # conn.close()
 
     print("intial CPRs ereased official cprs added")
 

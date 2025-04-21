@@ -90,8 +90,6 @@ def add_pools(date):
     print("\ncount = ", records[0][0])
 
     conn.commit()
-    # not sure if this is good....
-    # conn.close()
 
 
 ###############################################################################

@@ -61,5 +61,5 @@ def after6thAll(date):
     # print("added all ginnies")
 
 
-date = "202503"
-after6thAll(date)
+# date = "202503"
+# after6thAll(date)

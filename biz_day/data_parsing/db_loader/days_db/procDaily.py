@@ -36,7 +36,6 @@ def proc_daily(date, first):
     cursor.execute(sql)
 
     conn.commit()
-    # conn.close()
 
     print("processed dailies")
 

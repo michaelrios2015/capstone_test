@@ -42,7 +42,7 @@ def firstAll(date):
 
     print("processed new daily pools")
 
-    # Then add this to rge other database
+    # Then add this to the other database
 
     # ech of these can be a function seems a little like overkill but do mix and match them a bit
     # TRUNCATE ginnies;
@@ -63,5 +63,5 @@ def firstAll(date):
     # print("added all ginnies")
 
 
-date = "202502"
+date = "202503"
 firstAll(date)

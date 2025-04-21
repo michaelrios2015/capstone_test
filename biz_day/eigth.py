@@ -20,10 +20,6 @@ from local_parser import *
 
 # we download the new platinums
 
-date = "202503"
-
-fed_date = "2025-04-02"
-
 
 def eigthAll(date, fed_date):
 
@@ -35,7 +31,7 @@ def eigthAll(date, fed_date):
 
     getFiles.download_parse_db("platcoll_" + date)
 
-    db_date = date_c.date_conv("202503")
+    db_date = date_c.date_conv(date)
 
     # print(db_date)
 

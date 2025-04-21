@@ -85,7 +85,6 @@ def add_plats(date):
     print("\ncount = ", records[0][0])
 
     conn.commit()
-    # conn.close()
 
 
 ###############################################################################

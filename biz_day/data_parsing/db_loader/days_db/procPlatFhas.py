@@ -45,7 +45,6 @@ def proc_plat_fhas(date):
     cursor.execute(sql)
 
     conn.commit()
-    # conn.close()
 
     print("processed platfhavas")
 

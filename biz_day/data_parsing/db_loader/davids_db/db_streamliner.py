@@ -63,7 +63,6 @@ def add_streamliner(date):
     print("\ncount = ", records[0][0])
 
     conn.commit()
-    # conn.close()
 
 
 # ##################################################################
