@@ -28,7 +28,7 @@ def add_cmos():
 
     # add them back
     sql = """
-            COPY cmos FROM 'C:\\Users\\Public\\cmodataforweb' DELIMITER ',' CSV HEADER;
+            COPY cmos FROM 'C:\\Users\\Public\\test_cmodataforweb' DELIMITER ',' CSV HEADER;
         """
 
     cursorTwo.execute(sql)

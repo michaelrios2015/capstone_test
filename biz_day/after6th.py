@@ -61,5 +61,6 @@ def after6thAll(date):
     # print("added all ginnies")
 
 
-# date = "202503"
-# after6thAll(date)
+# I just use the current month, previous to regular humans it works fine
+date = "202503"
+after6thAll(date)

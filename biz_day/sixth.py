@@ -15,10 +15,6 @@ from days_db import *
 from db_loader import *
 from local_parser import *
 
-date = "202503"
-
-fed_date = "2025-04-02"
-
 
 def sixthAll(date, fed_date):
 
@@ -107,3 +103,5 @@ date = "202503"
 fed_date = "2025-04-02"
 
 sixthAll(date, fed_date)
+
+# then run the after 6th day

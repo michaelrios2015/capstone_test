@@ -85,14 +85,7 @@ def eigthAll(date, fed_date):
 
     # ###############################################
 
-    # # TRUNCATE ginnies again
-
-    truncate.deleteGinnies()
-
-    # ##########################################################################################
-    # add back ginnies and dailies
-
-    ginnies.addGinnies()
+    # add back dailies
 
     dailys.addDailies()
 
