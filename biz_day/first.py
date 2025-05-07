@@ -63,5 +63,5 @@ def firstAll(date):
     # print("added all ginnies")
 
 
-date = "202503"
+date = "202504"
 firstAll(date)
