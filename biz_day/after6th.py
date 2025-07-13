@@ -62,5 +62,5 @@ def after6thAll(date):
 
 
 # I just use the current month, previous to regular humans it works fine
-date = "202503"
+date = "202506"
 after6thAll(date)

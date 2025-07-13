@@ -7,6 +7,8 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "..", "local_parser"))
 
 import date_c
 
+# david's code for some of the new fhava stuff
+
 
 def prepay(date):
     # where imput and output files are kept

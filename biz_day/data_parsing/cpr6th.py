@@ -27,12 +27,12 @@ def cprs6thAll(date):
     if not (os.path.exists("biz_day/data/input/nimonSFPS_" + date + ".txt")):
         gm_extractor.download_unzip_gm("nimonSFPS_" + date)
 
-    if not (os.path.exists("biz_day/data/input/monthlySFPS_" + date + ".txt")):
-        gm_extractor.download_unzip_gm("monthlySFPS_" + date)
+    # need a better way to check both monthlySPFS
+    gm_extractor.download_unzip_gm("monthlySFPS_" + date)
 
     prev_month = month.prev_month(date)
-    if not (os.path.exists("biz_day/data/input/monthlySFPS_" + prev_month + ".txt")):
-        gm_extractor.download_unzip_gm("monthlySFPS_" + prev_month)
+
+    gm_extractor.download_unzip_gm("monthlySFPS_" + prev_month)
 
     # process the data
     cprsFinal.cprs6th(date)

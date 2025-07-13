@@ -48,8 +48,8 @@ def fourthAll(date, fed_date):
 
 
 # date is the month we are getting data, which is month-1 like normal
-date = "202504"
+date = "202506"
 # will just calculate this by hand for now
-fed_date = "2025-04-02"
+fed_date = "2025-06-04"
 
 fourthAll(date, fed_date)

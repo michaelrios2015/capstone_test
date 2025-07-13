@@ -1,3 +1,6 @@
+# david's code for the regular fhava stuff
+
+
 def fhava(date):
 
     mDir = "biz_day/data/input/"

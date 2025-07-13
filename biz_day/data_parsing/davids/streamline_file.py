@@ -3,7 +3,7 @@ import csv
 import os
 import sys
 
-# so I need to tell it to work... so I have a subfolder
+# david's code for some of the new fhava stuff
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", "local_parser"))
 

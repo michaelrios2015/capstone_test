@@ -1,5 +1,7 @@
 import month
 
+# david's code for the 4th day cprs... just needed to make sure the right files were given
+
 # *********************************************************
 #       Goal : Use the liquidatd loan file to previous pool file to find
 #                   a. CDR of a pool

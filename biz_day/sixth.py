@@ -26,6 +26,11 @@ def sixthAll(date, fed_date):
 
     # print("calculated FHAVA")
 
+    # probably a better way to do it but here we are ereasing the intial pools so
+    # they can be replaced by the offical ones
+    if os.path.exists("biz_day/data/input/monthlySFPS_" + date + ".txt"):
+        os.remove("biz_day/data/input/monthlySFPS_" + date + ".txt")
+
     # # Download pool date, pasre it add it to the database
     getFiles.download_parse_db("monthlySFPS_" + date)
 
@@ -98,10 +103,16 @@ def sixthAll(date, fed_date):
     addCMO.add_cmos()
 
 
-date = "202503"
+# the past month
+date = "202506"
 
-fed_date = "2025-04-02"
+# the closests fed date
+# YYYY-MM-DD
+fed_date = "2025-07-02"
 
 sixthAll(date, fed_date)
 
 # then run the after 6th day
+
+if os.path.exists("biz_day/data/input/monthlySFPS_202506.txt"):
+    os.remove("biz_day/data/input/monthlySFPS_202506.txt")

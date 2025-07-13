@@ -1,5 +1,8 @@
 import month
 
+# davids code that calculates cprs on the 6th day...
+# i did not need to do much just make sure it got the right files
+
 
 def cprs6th(date):
 

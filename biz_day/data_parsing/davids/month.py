@@ -1,6 +1,8 @@
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
+# a helper function that gives me the next or pervious month in YYYYMM format, ideally this would probably ne in a different folder
+
 
 def prev_month(date):
 

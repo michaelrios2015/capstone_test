@@ -8,12 +8,6 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from conn_two import connTwo
 
 
-# # just here for testing
-# import truncate
-
-# truncate.deleteGinnies()
-
-
 def addDailies():
 
     connTwo.autocommit = True
@@ -21,16 +15,16 @@ def addDailies():
 
     # delete Ginnies from cmos database
     sql = """
-    COPY ginnies FROM 'C:\\Users\\Public\\test_dailypoolswithcurrfloatM' DELIMITER ','  CSV HEADER;
+    COPY ginnies FROM 'C:\\Users\\Public\\dailypoolswithcurrfloatM' DELIMITER ','  CSV HEADER;
 
 
-    COPY ginnies FROM 'C:\\Users\\Public\\test_dailypoolswithcurrfloatX' DELIMITER ','  CSV HEADER;  
+    COPY ginnies FROM 'C:\\Users\\Public\\dailypoolswithcurrfloatX' DELIMITER ','  CSV HEADER;  
 
 
-    COPY ginnies FROM 'C:\\Users\\Public\\test_dailypoolswithcurrfloatJM' DELIMITER ','  CSV HEADER;
+    COPY ginnies FROM 'C:\\Users\\Public\\dailypoolswithcurrfloatJM' DELIMITER ','  CSV HEADER;
 
 
-    COPY ginnies FROM 'C:\\Users\\Public\\test_dailypoolswithcurrfloatRG' DELIMITER ','  CSV HEADER;
+    COPY ginnies FROM 'C:\\Users\\Public\\dailypoolswithcurrfloatRG' DELIMITER ','  CSV HEADER;
         """
 
     cursorTwo.execute(sql)

@@ -22,16 +22,16 @@ def addFirstDay():
 
     # delete Ginnies from cmos database
     sql = """
-    COPY ginnies FROM 'C:\\Users\\Public\\test_1stbddailypoolswithcurrfloatM' DELIMITER ','  CSV HEADER;
+    COPY ginnies FROM 'C:\\Users\\Public\\1stbddailypoolswithcurrfloatM' DELIMITER ','  CSV HEADER;
 
 
-    COPY ginnies FROM 'C:\\Users\\Public\\test_1stbddailypoolswithcurrfloatX' DELIMITER ','  CSV HEADER;
+    COPY ginnies FROM 'C:\\Users\\Public\\1stbddailypoolswithcurrfloatX' DELIMITER ','  CSV HEADER;
 
 
-    COPY ginnies FROM 'C:\\Users\\Public\\test_1stbddailypoolswithcurrfloatJM' DELIMITER ','  CSV HEADER;
+    COPY ginnies FROM 'C:\\Users\\Public\\1stbddailypoolswithcurrfloatJM' DELIMITER ','  CSV HEADER;
 
 
-    COPY ginnies FROM 'C:\\Users\\Public\\test_1stbddailypoolswithcurrfloatRG' DELIMITER ','  CSV HEADER;
+    COPY ginnies FROM 'C:\\Users\\Public\\1stbddailypoolswithcurrfloatRG' DELIMITER ','  CSV HEADER;
         """
 
     cursorTwo.execute(sql)

@@ -90,8 +90,8 @@ def eigthAll(date, fed_date):
     dailys.addDailies()
 
 
-date = "202503"
+date = "202506"
 
-fed_date = "2025-04-02"
+fed_date = "2025-07-02"
 
 eigthAll(date, fed_date)

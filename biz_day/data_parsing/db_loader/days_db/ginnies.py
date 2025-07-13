@@ -21,17 +21,17 @@ def addGinnies():
 
     # delete Ginnies from cmos database
     sql = """
-        COPY ginnies FROM 'C:\\Users\\Public\\test_ginnieplatswithcurrfloatM' DELIMITER ','  CSV HEADER; 
+        COPY ginnies FROM 'C:\\Users\\Public\\ginnieplatswithcurrfloatM' DELIMITER ','  CSV HEADER; 
 
-        COPY ginnies FROM 'C:\\Users\\Public\\test_ginnieplatswithcurrfloatX' DELIMITER ','  CSV HEADER;
+        COPY ginnies FROM 'C:\\Users\\Public\\ginnieplatswithcurrfloatX' DELIMITER ','  CSV HEADER;
 
-        COPY ginnies FROM 'C:\\Users\\Public\\test_poolswithcurrfloatM' DELIMITER ','  CSV HEADER;   
+        COPY ginnies FROM 'C:\\Users\\Public\\poolswithcurrfloatM' DELIMITER ','  CSV HEADER;   
 
-        COPY ginnies FROM 'C:\\Users\\Public\\test_poolswithcurrfloatX' DELIMITER ','  CSV HEADER;
+        COPY ginnies FROM 'C:\\Users\\Public\\poolswithcurrfloatX' DELIMITER ','  CSV HEADER;
 
-        COPY ginnies FROM 'C:\\Users\\Public\\test_poolswithcurrfloatJM' DELIMITER ','  CSV HEADER;
+        COPY ginnies FROM 'C:\\Users\\Public\\poolswithcurrfloatJM' DELIMITER ','  CSV HEADER;
 
-        COPY ginnies FROM 'C:\\Users\\Public\\test_poolswithcurrfloatRG' DELIMITER ','  CSV HEADER; """
+        COPY ginnies FROM 'C:\\Users\\Public\\poolswithcurrfloatRG' DELIMITER ','  CSV HEADER; """
 
     cursorTwo.execute(sql)
 
