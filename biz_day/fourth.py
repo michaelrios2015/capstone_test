@@ -25,6 +25,8 @@ def fourthAll(date, fed_date):
     # we calcalulate the intial CPRS and add them to the database
     cpr4th.cprs4thAll(date)
 
+    fhava4th.fhava4thAll(date)
+
     # still processing from the previous month
     prev_month = month.prev_month(date)
 
@@ -48,8 +50,8 @@ def fourthAll(date, fed_date):
 
 
 # date is the month we are getting data, which is month-1 like normal
-date = "202506"
+date = "202507"
 # will just calculate this by hand for now
-fed_date = "2025-06-04"
+fed_date = "2025-07-02"
 
 fourthAll(date, fed_date)

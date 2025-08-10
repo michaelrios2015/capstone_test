@@ -63,5 +63,6 @@ def firstAll(date):
     # print("added all ginnies")
 
 
-date = "202504"
+# I think we just use one month past yes seems right
+date = "202507"
 firstAll(date)

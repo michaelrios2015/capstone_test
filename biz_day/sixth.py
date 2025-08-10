@@ -104,15 +104,12 @@ def sixthAll(date, fed_date):
 
 
 # the past month
-date = "202506"
+date = "202507"
 
 # the closests fed date
 # YYYY-MM-DD
-fed_date = "2025-07-02"
+fed_date = "2025-08-06"
 
 sixthAll(date, fed_date)
 
 # then run the after 6th day
-
-if os.path.exists("biz_day/data/input/monthlySFPS_202506.txt"):
-    os.remove("biz_day/data/input/monthlySFPS_202506.txt")

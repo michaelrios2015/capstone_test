@@ -47,14 +47,14 @@ def dailys(file):
     if file == "dailySFPS":
 
         # make entire title
-        new_title = "biz_day\data\input\monthlySFPS_" + formatted_datetime + ".txt"
+        new_title = "biz_day/data/input/monthlySFPS_" + formatted_datetime + ".txt"
 
         # check to see if the file already exists
         if os.path.exists(new_title):
             # if so it should be an oldre version remove it
             os.remove(new_title)
         # then we just need to be able to rename it correctly
-        os.rename("biz_day\data\input\dailySFPS.txt", new_title)
+        os.rename("biz_day/data/input/dailySFPS.txt", new_title)
 
     return formatted_datetime
 
