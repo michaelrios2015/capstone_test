@@ -27,7 +27,7 @@ def eigthAll(date, fed_date):
 
     getFiles.download_parse_db("platmonPPS_" + date)
 
-    # download platcolls
+    # download platcolls, parse thenm and add to database
 
     getFiles.download_parse_db("platcoll_" + date)
 
@@ -90,8 +90,8 @@ def eigthAll(date, fed_date):
     dailys.addDailies()
 
 
-date = "202506"
+date = "202507"
 
-fed_date = "2025-07-02"
+fed_date = "2025-08-06"
 
 eigthAll(date, fed_date)
