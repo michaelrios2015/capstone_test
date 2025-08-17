@@ -4,27 +4,27 @@
 project-root/
 │
 ├── biz_day/ # Entry points for each "business day" workflow
-│ ├── day1.py
-│ ├── day2.py
+│ ├── first.py
+│ ├── fourth.py
 │ └── ...
 │
 ├── data_parsing/ # Core functions for data processing
-│ ├── cpr4th.py # Main parsing/processing functions
-│ │
-│ ├── davids_scripts/ # Scripts with calculation logic
-│ │ ├── calc_x.py
+│ ├── cpr4th.py # calculates speeds for the 4th business day, we will have many more of these type of functions
+│ └── ...
+│ ├── davids/ # Scripts with calculation logic
+│ │ ├── cprs_final.py
 │ │ └── ...
 │ │
-│ ├── loaders/ # Database loading scripts
-│ │ ├── db_loader.py
+│ ├── db_loader/ # Database loading scripts
+│ │ ├── a bunch more sub folders
 │ │ └── ...
 │ │
-│ ├── downloaders/ # File download automation (Selenium, etc.)
-│ │ ├── selenium_downloader.py
+│ ├── ginnie_extract/ # File download automation (Selenium, etc.)
+│ │ ├── gm_extractor.py
 │ │ └── ...
 │ │
-│ └── parsers/ # Extract/clean raw data from downloaded files
-│ ├── pool_parser.py
+│ └── local_parser/ # Extract/clean raw data from downloaded files
+│ ├── pools.py
 │ └── ...
 │
 └── README.md # Project documentation
@@ -61,7 +61,7 @@ This will:
 
 ### 2. **Data Parsing (`data_parsing/`)**
 
-- **`cpr4th.py`** — main entry for parsing functions.
+- **`cpr4th.py`** — an example of a main entry for a parsing function, in this case it calculates the cpr speed on the 4th business day.
 - Subfolders:
 
   - **`davids/`** — numerical/statistical calculations on parsed data.
