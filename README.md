@@ -30,8 +30,6 @@ project-root/
 └── README.md # Project documentation
 ```
 
-````
-
 ---
 
 ## 🚀 Usage
@@ -41,9 +39,9 @@ project-root/
    Each script in `biz_day/` represents a full end-to-end workflow for a specific reporting/business day.
    Example:
 
-   ```bash
-   python biz_day/day1.py
-````
+   ```
+   python biz_day/sixth.py
+   ```
 
 This will:
 
@@ -66,10 +64,10 @@ This will:
 - **`cpr4th.py`** — main entry for parsing functions.
 - Subfolders:
 
-  - **`davids_scripts/`** — numerical/statistical calculations on parsed data.
-  - **`loaders/`** — database integration (e.g., insert/update logic).
-  - **`downloaders/`** — automated file download via Selenium and other methods.
-  - **`parsers/`** — logic for cleaning and structuring raw datasets.
+  - **`davids/`** — numerical/statistical calculations on parsed data.
+  - **`db_loader/`** — database integration (e.g., insert/update logic).
+  - **`ginnie_extract/`** — automated file download via Selenium and other methods.
+  - **`local_parser/`** — logic for cleaning and structuring raw datasets.
 
 ---
 
@@ -78,13 +76,7 @@ This will:
 - **Python 3.x**
 - **Selenium** (for automated downloads)
 - **Pandas / NumPy** (data wrangling & calculations)
-- **SQLAlchemy or psycopg2** (if loading into a SQL database)
-
-Install requirements with:
-
-```bash
-pip install -r requirements.txt
-```
+- **Psycopg2** (for loading into a SQL database)
 
 ---
 
