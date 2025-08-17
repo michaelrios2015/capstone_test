@@ -1,19 +1,6 @@
-Perfect — thanks for explaining the structure 🙌. Since you want this in a **Markdown file**, I’ll write it up in a way that documents your project clearly, including folder layout, purpose of each piece, and example usage. Here’s a draft `README.md` for your Ginnie Mae data processing code:
-
----
-
-```markdown
-# Ginnie Mae Data Processing
-
-This repository contains code for downloading, parsing, calculating, and loading **Ginnie Mae data** into a database.
-
-The project is organized to separate **high-level business-day workflows** from the **supporting data parsing, downloading, and calculation utilities**.
-
----
-
 ## 📂 Project Structure
-```
 
+```
 project-root/
 │
 ├── biz_day/ # Entry points for each "business day" workflow
@@ -41,6 +28,7 @@ project-root/
 │ └── ...
 │
 └── README.md # Project documentation
+```
 
 ````
 
